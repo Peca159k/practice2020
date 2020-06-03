@@ -1,6 +1,5 @@
 import React from 'react';
-import Capp from './Capp';
-import Cgetapp from './Capp';
+import Capp from './Compopnents/Capp/Capp';
 
 function App() {
   return (

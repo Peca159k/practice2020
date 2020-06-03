@@ -1,5 +1,5 @@
 import React from 'react';
-import Cgetapp from './Cgetapp';
+import Cgetapp from '../CgetApp/Cgetapp';
 import axios from 'axios';
 import { render } from '@testing-library/react';
 
@@ -8,7 +8,7 @@ export default class Capp extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state ={ data: {}, isFetching: true, error: null, posts: [] };
+        this.state ={ token: null, isFetching: true, error: null, posts: [] };
     }
 
     componentDidMount() {
@@ -23,13 +23,13 @@ export default class Capp extends React.Component {
             })
         })
             .then(response => response.json())
-            .then(result => this.setState({data: result, isFetching: false }));
+            .then(result => {
+                this.setState(prevState => ({...prevState, id: result.id, token:result.access_token, isFetching: false }))
+            });
     }
 
     render() {
-        const { data, isFetching, error, posts } = this.state;
-        let id = data.id;
-        let token = data.access_token;
+        const { token, id, isFetching } = this.state;
         if (isFetching) return <div>...Loading</div>;
         return (
             <div>
