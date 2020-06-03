@@ -28,18 +28,22 @@ export default class CgetApp extends React.Component {
         const { data } = this.state;
         console.log(data);
         return (
-            <div>
+            <table border="1">
                 {data && data.map(item => {
                     const {name, price, id, created_at, status} = item
                     return <div className="item">
-                        <p>{id}</p>
-                        <p>{name}</p>
-                        <p>{price}</p>
-                        <p>{status}</p>
-                        <p>{created_at}</p>
+                        
+                            <tr>
+                                <td><p>{id}</p></td>
+                                <td><p>{name}</p></td>
+                                <td><p>{price}</p></td>
+                                <td><p>{status}</p></td>
+                                <td><p>{created_at}</p></td>
+                            </tr>
+                        
                     </div>
                 })}
-            </div>  
+            </table> 
             )
     }
 
